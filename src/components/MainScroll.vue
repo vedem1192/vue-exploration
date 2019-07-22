@@ -26,6 +26,8 @@
 
 <script>
 import "intersection-observer";
+import { CONST } from "./../common/constants";
+import { ACTIONS } from "./../common/actions";
 import Map from "./Map";
 import LeftMenu from "./LeftMenu";
 import Scrollama from "vue-scrollama"; // https://github.com/shenoy/vue-scrollama#vue-scrollama
@@ -40,21 +42,19 @@ export default {
 
   data() {
     return {
-      coords: { longitude: 10, lattitude: 12 }
+      coords: { longitude: "", lattitude: "" }
     };
   },
 
   methods: {
-    stepEnterHandler({ element, index }) {
-      if (element.classList.contains("step")) {
+    stepEnterHandler({ element, index, direction }) {
+      if (element.classList.contains("step") && direction === CONST.DOWN) {
         Map.methods.moveTo(index);
       }
     },
 
     mapClicked({ lng, lat }) {
       console.log("My child was clicked");
-      console.log("Longitude : ", lng);
-      console.log("Lattitude : ", lat);
       this.coords.longitude = lng;
       this.coords.lattitude = lat;
     },
@@ -63,7 +63,7 @@ export default {
       console.log(action);
 
       // TODO : Create a dispatch service
-      if (action === "go-to-seattle") {
+      if (action === ACTIONS.TO_SEATTLE) {
         Map.methods.moveTo(0);
       }
     }

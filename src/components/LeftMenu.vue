@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { ACTIONS } from "./../common/actions";
+
 export default {
   name: "leftMenu",
   props: ["coordinates"],
@@ -17,7 +19,7 @@ export default {
   methods: {
     buttonWasClicked() {
       console.log("Button was clicked");
-      this.$emit("menu-action", { action: "go-to-seattle" });
+      this.$emit(ACTIONS.MENU, { action: ACTIONS.TO_SEATTLE });
     }
   }
 };
