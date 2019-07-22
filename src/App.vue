@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <!-- <main-scroll></main-scroll> -->
+    <mgl-map></mgl-map>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+// import MainScroll from "./components/MainScroll";
+import MglMap from "./components/Map";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    // MainScroll,
+    MglMap
   }
 };
 </script>
