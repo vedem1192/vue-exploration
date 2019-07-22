@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-    <!-- <main-scroll></main-scroll> -->
-    <mgl-map></mgl-map>
+    <MainScroll></MainScroll>
   </div>
 </template>
 
 <script>
-// import MainScroll from "./components/MainScroll";
-import MglMap from "./components/Map";
+import MainScroll from "./components/MainScroll";
 
 export default {
   name: "app",
   components: {
-    // MainScroll,
-    MglMap
+    MainScroll
   }
 };
 </script>
@@ -23,8 +20,6 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

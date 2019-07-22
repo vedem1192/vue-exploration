@@ -8,7 +8,7 @@
       <p>SCROLL TO CONTINUE</p>
     </div>
     <Scrollama :debug="true" :offset="0.5" v-on:step-enter="stepEnterHandler">
-      <div class="graphic" slot="graphic">{{ currStep }}</div>
+      <Map class="graphic" slot="graphic"></Map>
       <div class="step" data-step-no="1">step 1</div>
       <div class="step" data-step-no="2">step 2</div>
       <div class="step" data-step-no="3">step 3</div>
@@ -22,11 +22,13 @@
 
 <script>
 import "intersection-observer";
+import Map from "./Map";
 import Scrollama from "vue-scrollama"; // https://github.com/shenoy/vue-scrollama#vue-scrollama
 
 export default {
   props: [],
   components: {
+    Map,
     Scrollama
   },
 
@@ -40,7 +42,6 @@ export default {
     stepEnterHandler({ element, index, direction }) {
       // handle the step-event as required here
       console.log(element, index, direction);
-      this.currStep = "Hello " + element.dataset.stepNo;
     }
   }
 };
@@ -55,12 +56,7 @@ export default {
 }
 .graphic {
   height: 100vh;
-  border: 1px solid #ccc;
-  background-color: #eee;
-  font-size: 10rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100vw;
 }
 .step {
   padding: 15vh 0;
@@ -71,13 +67,5 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
