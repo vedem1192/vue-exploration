@@ -12,7 +12,11 @@
       <div class="step" data-step-no="1">Seattle</div>
       <div class="step" data-step-no="2">Los Angeles</div>
       <div class="step" data-step-no="3">New York</div>
+      <LeftMenu v-on:menu-action="menuAction" v-bind:coordinates="coords"></LeftMenu>
     </Scrollama>
+    <div>
+      <p>Something</p>
+    </div>
     <div class="outro">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, at velit
       sint facere ipsam doloremque placeat vel impedit sapiente alias.
@@ -23,39 +27,58 @@
 <script>
 import "intersection-observer";
 import Map from "./Map";
+import LeftMenu from "./LeftMenu";
 import Scrollama from "vue-scrollama"; // https://github.com/shenoy/vue-scrollama#vue-scrollama
 
 export default {
   props: [],
   components: {
     Map,
+    LeftMenu,
     Scrollama
   },
 
   data() {
     return {
-      currStep: null
+      coords: { longitude: 10, lattitude: 12 }
     };
   },
 
   methods: {
-    stepEnterHandler({ element, index, direction }) {
-      Map.methods.moveTo(index);
+    stepEnterHandler({ element, index }) {
+      if (element.classList.contains("step")) {
+        Map.methods.moveTo(index);
+      }
     },
 
     mapClicked({ lng, lat }) {
       console.log("My child was clicked");
       console.log("Longitude : ", lng);
       console.log("Lattitude : ", lat);
-      // Map.methods.moveTo(0);
+      this.coords.longitude = lng;
+      this.coords.lattitude = lat;
+    },
+
+    menuAction({ action }) {
+      console.log(action);
+
+      // TODO : Create a dispatch service
+      if (action === "go-to-seattle") {
+        Map.methods.moveTo(0);
+      }
     }
   }
 };
 </script>
 
 <style src="vue-scrollama/dist/vue-scrollama.css"></style>
-
 <style>
+.main-container {
+  z-index: 0;
+}
+LeftMenu {
+  float: left;
+}
 .intro,
 .outro {
   padding: 33vh;

@@ -14,7 +14,7 @@ export const locations = [
     camera: {
       center: [-118.24368, 34.05223],
       zoom: 6.21,
-      speed: 0.35
+      speed: 0.5
     }
   },
   {
