@@ -8,10 +8,10 @@
       <p>SCROLL TO CONTINUE</p>
     </div>
     <Scrollama :debug="true" :offset="0.5" v-on:step-enter="stepEnterHandler">
-      <Map class="graphic" slot="graphic"></Map>
-      <div class="step" data-step-no="1">step 1</div>
-      <div class="step" data-step-no="2">step 2</div>
-      <div class="step" data-step-no="3">step 3</div>
+      <Map class="graphic" slot="graphic" v-on:map-clicked="mapClicked"></Map>
+      <div class="step" data-step-no="1">Seattle</div>
+      <div class="step" data-step-no="2">Los Angeles</div>
+      <div class="step" data-step-no="3">New York</div>
     </Scrollama>
     <div class="outro">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, at velit
@@ -40,8 +40,14 @@ export default {
 
   methods: {
     stepEnterHandler({ element, index, direction }) {
-      // handle the step-event as required here
-      console.log(element, index, direction);
+      Map.methods.moveTo(index);
+    },
+
+    mapClicked({ lng, lat }) {
+      console.log("My child was clicked");
+      console.log("Longitude : ", lng);
+      console.log("Lattitude : ", lat);
+      // Map.methods.moveTo(0);
     }
   }
 };
@@ -52,7 +58,7 @@ export default {
 <style>
 .intro,
 .outro {
-  padding: 20vh;
+  padding: 33vh;
 }
 .graphic {
   height: 100vh;

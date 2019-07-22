@@ -5,23 +5,39 @@
 <script>
 import mapboxgl from "mapbox-gl";
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from "./../config/dev.env";
+import { locations } from "./../data/locations";
+let map;
 
 export default {
   name: "Map",
 
   mounted() {
     this.createMap();
+    this.initControls();
   },
 
   methods: {
     createMap() {
+      console.log("Creating map");
       mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
-      this.map = new mapboxgl.Map({
+
+      map = new mapboxgl.Map({
         container: "map",
         style: MAPBOX_STYLE,
         center: [-122.33207, 47.60621],
         zoom: 13
       });
+      console.log("Map created ", map);
+    },
+
+    initControls() {
+      map.on("click", point => {
+        this.$emit("map-clicked", point.lngLat);
+      });
+    },
+
+    moveTo(index) {
+      map.flyTo(locations[index].camera);
     }
   }
 };
