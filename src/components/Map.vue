@@ -5,7 +5,7 @@
 <script>
 import mapboxgl from "mapbox-gl";
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from "./../config/dev.env";
-import { locations } from "./../data/locations";
+import { locations } from "./../assets/data/CityCameraSetting";
 let map;
 
 export default {

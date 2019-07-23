@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { ACTIONS } from "./../common/actions";
+import { ACTIONS } from "./../utils/actions";
 
 export default {
   name: "leftMenu",
@@ -26,10 +26,10 @@ export default {
 </script>
 
 
-<style>
+<style scope>
 #left-menu {
-  float: left;
-  height: 500px;
+  height: 80vh;
+  margin: 4em;
   width: 300px;
   background-color: aquamarine;
   z-index: 2;

@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <MainScroll></MainScroll>
+    <EventMediator></EventMediator>
   </div>
 </template>
 
 <script>
-import MainScroll from "./components/MainScroll";
+import EventMediator from "./components/EventMediator";
 
 export default {
   name: "app",
   components: {
-    MainScroll
+    EventMediator
   }
 };
 </script>
