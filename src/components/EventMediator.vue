@@ -1,7 +1,7 @@
 <template>
   <div>
     <Map id="map"></Map>
-    <Scrollama></Scrollama>
+    <Scrollama v-on:scroll-action="handleScrollEvent"></Scrollama>
     <LeftMenu id="left-menu" v-bind:coordinates="coordinates"></LeftMenu>
   </div>
 </template>
@@ -24,6 +24,13 @@ export default {
     return {
       coordinates: { longitude: 10, lattitude: 12 }
     };
+  },
+
+  methods: {
+    handleScrollEvent({ index }) {
+      //   Map.methods.moveTo(index);
+      console.log("Received", index);
+    }
   }
 };
 </script>

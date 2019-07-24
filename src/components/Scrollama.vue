@@ -18,6 +18,7 @@
 
 <script>
 import "intersection-observer";
+import { ACTIONS } from "./../utils/actions";
 import Scrollama from "vue-scrollama"; // https://github.com/shenoy/vue-scrollama#vue-scrollama
 
 export default {
@@ -29,6 +30,7 @@ export default {
   methods: {
     stepEnterHandler(event) {
       console.log(JSON.stringify(event));
+      this.$emit(ACTIONS.SCROLL, { action: event.index });
     }
   }
 };
