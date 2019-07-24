@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { ACTIONS } from "./../utils/actions";
+import { EVENTS } from "./../utils/events";
 
 export default {
   name: "leftMenu",
@@ -19,7 +19,7 @@ export default {
   methods: {
     buttonWasClicked() {
       console.log("Button was clicked");
-      this.$emit(ACTIONS.MENU, { action: ACTIONS.TO_SEATTLE });
+      this.$emit(EVENTS.MENU, { action: EVENTS.TO_SEATTLE });
     }
   }
 };

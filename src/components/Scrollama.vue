@@ -11,26 +11,23 @@
       <div class="step" data-step-no="1">Seattle</div>
       <div class="step" data-step-no="2">Los Angeles</div>
       <div class="step" data-step-no="3">New York</div>
-      <div class="step outro" data-step-no="4"></div>
     </Scrollama>
   </div>
 </template>
 
 <script>
 import "intersection-observer";
-import { ACTIONS } from "./../utils/actions";
+import { EVENTS } from "./../utils/events";
 import Scrollama from "vue-scrollama"; // https://github.com/shenoy/vue-scrollama#vue-scrollama
 
 export default {
-  props: [],
   components: {
     Scrollama
   },
 
   methods: {
     stepEnterHandler(event) {
-      console.log(JSON.stringify(event));
-      this.$emit(ACTIONS.SCROLL, { action: event.index });
+      this.$emit(EVENTS.SCROLL, event);
     }
   }
 };
@@ -45,10 +42,6 @@ export default {
 .intro {
   background-color: white;
   padding: 33vh;
-}
-
-.outro {
-  visibility: hidden;
 }
 
 .graphic {

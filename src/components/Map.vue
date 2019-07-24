@@ -6,6 +6,7 @@
 import mapboxgl from "mapbox-gl";
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from "./../config/dev.env";
 import { locations } from "./../assets/data/CityCameraSetting";
+import { EVENTS } from "../utils/events";
 let map;
 
 export default {
@@ -32,7 +33,7 @@ export default {
 
     initControls() {
       map.on("click", point => {
-        this.$emit("map-clicked", point.lngLat);
+        this.$emit(EVENTS.MAP, point.lngLat);
       });
     },
 

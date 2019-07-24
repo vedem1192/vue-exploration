@@ -27,7 +27,7 @@
 <script>
 import "intersection-observer";
 import { CONST } from "./../utils/constants";
-import { ACTIONS } from "./../utils/actions";
+import { ACTIONS } from "./../utils/events";
 import Map from "./Map";
 import LeftMenu from "./LeftMenu";
 import Scrollama from "vue-scrollama"; // https://github.com/shenoy/vue-scrollama#vue-scrollama
